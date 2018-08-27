@@ -20,14 +20,14 @@ router.get('/:id', function(request,response){
 
 router.post('/', function(request,response,next){
   queries.post("books", request.body)
-  .then(newEvent => {
-    response.status(201).json({newEvent})
+  .then(newForm => {
+    response.status(201).json({newForm})
   })
 })
 
 router.put('/:id', function(request,response,next){
   queries.update("books", request.params.id, request.body)
-  .then(updatedEvent => response.json(updatedEvent))
+  .then(updatedForm => response.json(updatedFomr))
 })
 
 router.delete('/:id', function(request,response,next){
