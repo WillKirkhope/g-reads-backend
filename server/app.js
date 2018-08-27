@@ -1,16 +1,19 @@
-const express = require('express')
+const express = require("express")
 const app = express()
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const port = parseInt(process.env.PORT || 3000)
-
+const cors = require("cors")
+const bodyParser = require("body-parser")
+const port = process.env.PORT || 9000
+const books = require("./routes/books")
+const authors = require("./routes/authors")
 
 
 app.use(cors())
 app.use(bodyParser.json())
-app.get('/', (req,res,next) => {
-  res.json({
-    message: 'Hello World!'
-  });
+
+app.use("/books", books)
+app.use("/authors", authors)
+
+
+app.listen(port, () => {
+    console.log(`I am listening on ${port}`)
 })
-app.listen(port, () => {console.log(`Listening on port ${port}`)})
