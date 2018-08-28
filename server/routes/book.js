@@ -4,34 +4,34 @@ const router = express.Router()
 const queries = require("../db/queries")
 
 router.get('/', (req,res,next) => {
-    queries.list('books')
-    .then(event => {
-        res.json({event})
+    queries.list('book')
+    .then(book => {
+        res.json({book})
     })
 })
 
 router.get('/:id', function(request,response){
-  queries.read("books", request.params.id).then(event => {
-      event
-          ? response.json({event})
+  queries.read("book", request.params.id).then(book => {
+      book
+          ? response.json({book})
           : response.status(404).json({message: 'Not found'})
   })
 })
 
 router.post('/', function(request,response,next){
-  queries.post("books", request.body)
+  queries.post("book", request.body)
   .then(newForm => {
     response.status(201).json({newForm})
   })
 })
 
 router.put('/:id', function(request,response,next){
-  queries.update("books", request.params.id, request.body)
-  .then(updatedForm => response.json(updatedFomr))
+  queries.update("book", request.params.id, request.body)
+  .then(updatedForm => response.json(updatedForm))
 })
 
 router.delete('/:id', function(request,response,next){
-  queries.deleteOne("books", request.params.id)
+  queries.deleteOne("book", request.params.id)
   .then(() => {
     response.status(204).json()
   })

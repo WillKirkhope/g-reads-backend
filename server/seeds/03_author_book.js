@@ -3,14 +3,14 @@ exports.seed = function(knex, Promise) {
   return knex('author_book').del()
     .then(function () {
       return knex('author_book').insert([
-        {booksInfo: 1, authorsInfo: 1},
-        {booksInfo: 1, authorsInfo: 2},
-        {booksInfo: 1, authorsInfo: 3},
-        {booksInfo: 2, authorsInfo: 4},
-        {booksInfo: 3, authorsInfo: 5},
-        {booksInfo: 4, authorsInfo: 6},
-        {booksInfo: 5, authorsInfo: 6},
-        {booksInfo: 6, authorsInfo: 6}
+        {books_info: 1, authors_info: 1},
+        {books_info: 1, authors_info: 2},
+        {books_info: 1, authors_info: 3},
+        {books_info: 2, authors_info: 4},
+        {books_info: 3, authors_info: 5},
+        {books_info: 4, authors_info: 6},
+        {books_info: 5, authors_info: 6},
+        {books_info: 6, authors_info: 6}
       ]);
     });
 };

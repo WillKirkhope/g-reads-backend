@@ -5,29 +5,29 @@ const queries = require("../db/queries")
 
 router.get('/', (req,res,next) => {
     queries.list('authors')
-    .then(event => {
-        res.json({event})
+    .then(authors => {
+        res.json({authors})
     })
 })
 
 router.get('/:id', function(request,response){
-  queries.read("authors", request.params.id).then(event => {
-      event
-          ? response.json({event})
+  queries.read("authors", request.params.id).then(authors => {
+      authors
+          ? response.json({authors})
           : response.status(404).json({message: 'Not found'})
   })
 })
 
 router.post('/', function(request,response,next){
   queries.post("authors", request.body)
-  .then(newEvent => {
-    response.status(201).json({newEvent})
+  .then(newForm => {
+    response.status(201).json({newForm})
   })
 })
 
 router.put('/:id', function(request,response,next){
   queries.update("authors", request.params.id, request.body)
-  .then(updatedEvent => response.json(updatedEvent))
+  .then(updatedForm => response.json(updatedForm))
 })
 
 router.delete('/:id', function(request,response,next){
