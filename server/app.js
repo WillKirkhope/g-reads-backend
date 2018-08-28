@@ -17,3 +17,6 @@ app.use("/authors", authors)
 app.listen(port, () => {
     console.log(`I am listening on ${port}`)
 })
+
+
+module.exports = app;
